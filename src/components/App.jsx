@@ -16,6 +16,10 @@ class App extends React.Component {
     this.clickedVideo = this.clickedVideo.bind(this);
     this.getData = this.getData.bind(this);
   }
+  componentDidMount() {
+    this.getData('dogs');
+  }
+
   clickedVideo(event) {
     let result = event.target.textContent;
     this.state.data.forEach((value, index) => {
@@ -27,11 +31,10 @@ class App extends React.Component {
 
   getData(input) {
     let context = this;
-    let callback = function(res) {
-      context.setState({data: res, videoPlayer: res[0]});
+    let callback = function (res) {
+      context.setState({ data: res, videoPlayer: res[0] });
     };
-    console.log(input);
-    var res = SearchYouTube({key: API_KEY, q: input, max: 5}, callback);
+    var res = SearchYouTube({ key: API_KEY, q: input, max: 5 }, callback);
   }
 
   render() {
