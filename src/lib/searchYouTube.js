@@ -1,16 +1,16 @@
-var searchYouTube = ({key, query, max = 5}, callback) => {
+var searchYouTube = ({key, q, max = 5}, callback) => {
 
   $.get('https://www.googleapis.com/youtube/v3/search', {
     part: 'snippet',
     key: key,
-    q: query,
+    q: q,
     maxResults: max,
     type: 'video',
     videoEmbeddable: 'true'
   })
     .done(({items}) => {
       if (callback) {
-        console.log('callback in .done', items);
+        // console.log('callback in .done', items);
         callback(items);
       }
     })

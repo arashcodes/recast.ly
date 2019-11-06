@@ -28,9 +28,12 @@ class App extends React.Component {
   }
 
   getData(input) {
+    let context = this;
+    let callback = function(res) {
+      context.setState({data: res, videoPlayer: res[0]});
+    };
     console.log(input);
-    // console.log('this is logged from getData', input);
-    var res = SearchYouTube({key: API_KEY, q: input, max: 5}, console.log);
+    var res = SearchYouTube({key: API_KEY, q: input, max: 5}, callback);
   }
 
   render() {
