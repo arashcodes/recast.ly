@@ -18,11 +18,9 @@ class App extends React.Component {
   }
   clickedVideo(event) {
     let result = event.target.textContent;
-
-    Data.forEach((value, index) => {
-
+    this.state.data.forEach((value, index) => {
       if (result === value.snippet.title) {
-        this.setState({ videoPlayer: Data[index] });
+        this.setState({ videoPlayer: value });
       }
     });
   }
